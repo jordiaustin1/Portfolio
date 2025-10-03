@@ -1,0 +1,503 @@
+/* --- 1. CSS Variables & Global Setup --- */
+:root {
+    --primary-color: #007BFF;
+    --accent-color: #00BFFF;
+    --bg-dark: #0A0A0A;
+    --bg-secondary: #111111;
+    --text-primary: #EAEAEA;
+    --text-secondary: #A0AEC0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(20, 20, 20, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.7;
+    background-image: radial-gradient(circle at 10% 10%, rgba(0, 123, 255, 0.1), transparent 30%),
+                      radial-gradient(circle at 90% 80%, rgba(0, 123, 255, 0.1), transparent 30%);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; letter-spacing: 1px; }
+h3 { font-size: 1.5rem; color: var(--text-primary); }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+ul {
+    list-style-type: none;
+}
+
+section {
+    padding: 7rem 0;
+}
+
+/* --- 2. Header & Navigation --- */
+header {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+nav .logo:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    gap: 2.5rem;
+}
+
+nav ul li a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--text-primary);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- 3. Hero Section --- */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.profile-picture {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.7);
+}
+
+#hero .subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 2.5rem;
+    color: var(--text-secondary);
+}
+
+.hero-links a {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--text-primary);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.hero-links a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+}
+
+/* --- 4. Reusable Card Component --- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 123, 255, 0.5);
+}
+
+hr.section-divider {
+    border: 0;
+    height: 0.2px;
+    background-color: var(--text-primary); /* Matches your site's border theme */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- 5. Section Specific Styles --- */
+
+#about { 
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+#experience { 
+    background: var(--bg-secondary); 
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.experience-grid .card .company {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.experience-grid .card ul { padding-left: 0; }
+.experience-grid .card ul li {
+    padding-left: 20px;
+    position: relative;
+}
+.experience-grid .card ul li::before {
+    content: '›';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 1.5rem;
+}
+#projects { background: transparent; }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.project-grid a.card { text-decoration: none; }
+.project-grid a.card h3 {
+    color: var(--text-primary);
+    margin-top: auto;
+}
+.project-grid a.card p { color: var(--text-secondary); }
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+.card:hover .project-image { transform: scale(1.03); }
+#skills-education { background: transparent; }
+#skills-education .container {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+#skills-education .column {
+    flex: 1;
+    min-width: 300px;
+}
+#skills-education h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+.skills-list strong {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* --- Swiper.js Coverflow Slider Styles --- */
+#certifications {
+    background: transparent;
+}
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    position: relative;
+}
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    max-width: 80vw;
+    height: auto;
+    max-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.4;
+    transform: scale(0.8);
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+.swiper-navigation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+}
+.swiper-button-next,
+.swiper-button-prev {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: var(--primary-color);
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.swiper-pagination {
+    position: relative;
+    bottom: auto;
+    width: auto;
+}
+.swiper-pagination .swiper-pagination-bullet {
+    background-color: var(--text-secondary);
+    opacity: 0.8;
+    width: 10px;
+    height: 10px;
+    transition: background-color 0.3s ease;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+    opacity: 1;
+}
+
+
+/* --- Lightbox Styles --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+@keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-btn:hover, .close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Footer --- */
+footer {
+    background: transparent;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 6rem 0 2rem;
+}
+footer .contact-intro {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+.contact-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+.contact-link:hover { color: var(--text-primary); }
+.contact-separator { display: none; }
+@media (min-width: 480px) { .contact-separator { display: inline; } }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+.social-icons a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--text-primary);
+    transform: translateY(-3px);
+}
+.social-icons svg {
+    width: 28px;
+    height: 28px;
+}
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(160, 174, 192, 0.7);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    nav ul { display: none; }
+    section { padding: 5rem 0; }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+    #skills-education .container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
