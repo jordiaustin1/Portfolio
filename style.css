@@ -188,6 +188,94 @@ nav ul li a:hover::after {
     box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
 }
 
+/* Style for the hamburger menu button */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010; /* Ensure it's on top of other content */
+}
+
+.hamburger-menu span {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--text-primary);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+/* Styles for when the menu is active/open (we'll add this class with JS) */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    /* Hide the original navigation links */
+    nav ul {
+        display: none;
+    }
+    
+    /* Show the hamburger menu button */
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    /* Style the mobile navigation menu container */
+    .nav-links {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 100%; /* Position it right below the header */
+        right: 0;
+        background: rgba(10, 10, 10, 0.9); /* Same as header, but less transparent */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* This class will be toggled by JavaScript to show the menu */
+    .nav-links.active {
+        display: flex;
+    }
+    
+    /* Restyle the list and links for a vertical mobile menu */
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}
+
 /* --- 4. Reusable Card Component --- */
 .card {
     background: var(--card-bg);
