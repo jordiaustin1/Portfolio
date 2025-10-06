@@ -565,10 +565,11 @@ footer .contact-intro {
     color: var(--text-primary);
     transform: translateY(-3px);
 }
-.social-icons svg {
-    width: 28px;
-    height: 28px;
+.social-icons a i {
+    font-size: 28px;
+    transition: color 0.3s ease;
 }
+
 .copyright {
     font-size: 0.9rem;
     color: rgba(160, 174, 192, 0.7);
