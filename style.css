@@ -170,13 +170,20 @@ nav ul li a:hover::after {
     color: var(--text-secondary);
 }
 
+.hero-links {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+}
+
 .hero-links a {
     display: inline-block;
     background: var(--primary-color);
     color: var(--text-primary);
     padding: 0.8rem 1.8rem;
     border-radius: 8px;
-    margin: 0 0.5rem;
     font-weight: 600;
     transition: all 0.3s ease;
     border: 1px solid transparent;
